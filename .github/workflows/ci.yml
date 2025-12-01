@@ -20,5 +20,5 @@ jobs:
       - name: Build and push the image
         run: |
           docker login --username WojtekWla --password ${{secrets.GH_PAT}} ghcr.io
-          docker build . -t ghcr.io/WojtekWla/iris-streamlit:latest
-          docker push ghcr.io/WojtekWla/iris-streamlit:latest
+          docker build . -t ghcr.io/wojtek-wla/iris-streamlit:latest
+          docker push ghcr.io/wojtek-wla/iris-streamlit:latest
