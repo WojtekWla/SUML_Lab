@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  test:
+  workflow:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,4 +16,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./app/requirements.txt
       - name: Run unit tests
-        run: pytest ./app/tests/test_app.py
+        run: pytest ./app/tests/test_app.py\
+      - name: Build and push the image
+        run: |
+          docker login --username WojtekWla --password ${{secrets.GH_PAT}} ghcr.io
+          docker build . -t ghcr.io/WojtekWla/iris-streamlit:latest
+          docker push ghcr.io/WojtekWla/iris-streamlit:latest
