@@ -4,7 +4,7 @@ import unittest
 class Tests(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(Tests, self).__init__(*args, **kwargs)
-        self.model = p.IrisModel('./app/tests/model.joblib')
+        self.model = p.IrisModel('./app/model.joblib')
 
     def test_predict_iris_setosa(self):
         result = self.model.predict(5.1, 3.5, 1.4, 0.2)
