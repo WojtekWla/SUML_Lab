@@ -1,5 +1,6 @@
 FROM python:3.12-slim
 LABEL authors="wojtek"
+LABEL org.opencontainers.image.source=https://github.com/WojtekWla/SUML_Lab
 
 WORKDIR /app
 COPY app/__init__.py .
