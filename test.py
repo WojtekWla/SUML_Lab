@@ -13,6 +13,7 @@ print("Info: ", X.info())
 print("Describe: ", X.describe())
 print("Head: ", X.head())
 print("Correlation", X.corr())
+print("Commit")
 
 print("Value counts:", y.value_counts())
 
