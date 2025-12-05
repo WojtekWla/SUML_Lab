@@ -1,7 +1,9 @@
 name: CI
 
 on: [push]
-
+permissions:
+  contents: read
+  packages: write
 jobs:
   workflow:
     runs-on: ubuntu-latest
@@ -16,9 +18,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./app/requirements.txt
       - name: Run unit tests
-        run: pytest ./app/tests/test_app.py\
+        run: pytest ./app/tests/test_app.py
       - name: Build and push the image
         run: |
-          docker login --username WojtekWla --password ${{secrets.GH_PAT}} ghcr.io
-          docker build . -t ghcr.io/wojtekwla/iris-streamlit:latest
-          docker push ghcr.io/wojtekwla/iris-streamlit:latest
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker build . -t ghcr.io/${{ github.repository_owner }}/iris-streamlit:latest
+          docker push ghcr.io/${{ github.repository_owner }}/iris-streamlit:latest
