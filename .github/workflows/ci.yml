@@ -22,5 +22,5 @@ jobs:
       - name: Build and push the image
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-          docker build . -t ghcr.io/${{ github.repository_owner }}/iris-streamlit:latest
-          docker push ghcr.io/${{ github.repository_owner }}/iris-streamlit:latest
+          docker build . -t ghcr.io/wojtekwla/iris-streamlit:latest
+          docker push ghcr.io/wojtekwla/iris-streamlit:latest
